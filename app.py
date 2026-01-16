@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
+import streamlit as st
 
 # Función para simular respuesta de API (datos hardcodeados para ejemplo)
 def simular_respuesta_api():
@@ -38,22 +39,22 @@ def calcular_balance(datos):
 def visualizar_datos(datos, balance):
     df = pd.DataFrame(datos)
     
-    plt.figure(figsize=(10, 5))
-    plt.subplot(1, 2, 1)
-    plt.bar(df['uid'], df['flujo'], color='blue')
-    plt.title('Flujos por Punto (L/s)')
-    plt.xlabel('UID')
-    plt.ylabel('Flujo (L/s)')
-    plt.axhline(y=balance['flujo_entrada'], color='red', linestyle='--', label='Flujo de Entrada')
-    plt.legend()
+    st.pyplotfigure(figsize=(10, 5))
+    st.pyplot.subplot(1, 2, 1)
+    st.pyplot.bar(df['uid'], df['flujo'], color='blue')
+    st.pyplot.title('Flujos por Punto (L/s)')
+    st.pyplot.xlabel('UID')
+    st.pyplot.ylabel('Flujo (L/s)')
+    st.pyplot.axhline(y=balance['flujo_entrada'], color='red', linestyle='--', label='Flujo de Entrada')
+    st.pyplot.legend()
     
-    plt.subplot(1, 2, 2)
-    plt.plot(df['uid'], df['presion'], marker='o', color='green')
-    plt.title('Presiones por Punto (kg/cm²)')
-    plt.xlabel('UID')
-    plt.ylabel('Presión (kg/cm²)')
+    st.pyplot.subplot(1, 2, 2)
+    st.pyplot.plot(df['uid'], df['presion'], marker='o', color='green')
+    st.pyplot.title('Presiones por Punto (kg/cm²)')
+    st.pyplot.xlabel('UID')
+    st.pyplot('Presión (kg/cm²)')
     
-    plt.tight_layout()
+    st.pyplot.tight_layout()
     plt.show()
     
     print("=== Balance de Agua ===")
